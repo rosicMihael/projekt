@@ -34,6 +34,13 @@ const Welcome = () => {
           </p>
         </>
       )}
+
+      <p>
+        <Link to="/dash/timesheet">View Timesheets</Link>
+      </p>
+      <p>
+        <Link to="/dash/timesheet/new">Add New Timesheet</Link>
+      </p>
     </section>
   );
 };

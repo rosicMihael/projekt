@@ -201,6 +201,15 @@ tr {
   gap: 0.1em;
 }
 
+.table__timesheet {
+  font-size: 1.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 0.5fr;
+  color: var(--TABLE-COLOR);
+  gap: 0.1em;
+}
+
 .table__button {
   padding: 0.25em;
   font-size: 1.5rem;

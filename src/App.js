@@ -15,6 +15,9 @@ import PersistLogin from "./features/auth/PersistLogin";
 import RequireAuth from "./features/auth/RequireAuth";
 import { ROLES } from "./config/roles";
 import useTitle from "./hooks/useTitle";
+import TimesheetsList from "./features/timesheet/TimesheetsList";
+import DailyLogs from "./features/timesheet/DailyLogs";
+import NewTimesheet from "./features/timesheet/NewTimesheet";
 
 function App() {
   useTitle("Dan D. Repairs");
@@ -50,6 +53,12 @@ function App() {
                   <Route index element={<NotesList />} />
                   <Route path=":id" element={<EditNote />} />
                   <Route path="new" element={<NewNote />} />
+                </Route>
+
+                <Route path="timesheet">
+                  <Route index element={<TimesheetsList />} />
+                  <Route path=":id" element={<DailyLogs />} />
+                  <Route path="new" element={<NewTimesheet />} />
                 </Route>
               </Route>
             </Route>

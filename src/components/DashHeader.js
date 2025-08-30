@@ -5,6 +5,8 @@ import {
   faFilePen,
   faUserGear,
   faUserPlus,
+  faCalendarCheck,
+  faCalendarPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -15,6 +17,7 @@ import { apiSlice } from "../app/api/apiSlice";
 const DASH_REGEX = /^\/dash(\/)?$/;
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
+const TIMESHEET_REGEX = /^\/dash\/timesheet(\/)?$/;
 
 const DashHeader = () => {
   const { isManager, isAdmin } = useAuth();
@@ -27,8 +30,10 @@ const DashHeader = () => {
 
   const onNewNoteClicked = () => navigate("/dash/notes/new");
   const onNewUserClicked = () => navigate("/dash/users/new");
+  const onNewTimesheetClicked = () => navigate("/dash/timesheet/new");
   const onNotesClicked = () => navigate("/dash/notes");
   const onUsersClicked = () => navigate("/dash/users");
+  const onTimesheetsClicked = () => navigate("/dash/timesheet");
 
   let dashClass = null;
   if (
@@ -85,6 +90,33 @@ const DashHeader = () => {
     );
   }
 
+  let newTimesheetButton = null;
+  if (TIMESHEET_REGEX.test(pathname)) {
+    newTimesheetButton = (
+      <button
+        className="icon-button"
+        title="New Timesheet"
+        onClick={onNewTimesheetClicked}
+      >
+        <FontAwesomeIcon icon={faCalendarPlus} />
+      </button>
+    );
+  }
+
+  let timesheetButton = null;
+
+  if (!TIMESHEET_REGEX.test(pathname) && pathname.includes("/dash")) {
+    timesheetButton = (
+      <button
+        className="icon-button"
+        title="Timesheets"
+        onClick={onTimesheetsClicked}
+      >
+        <FontAwesomeIcon icon={faCalendarCheck} />
+      </button>
+    );
+  }
+
   const onLogoutClicked = async () => {
     try {
       await sendLogout().unwrap();
@@ -113,6 +145,8 @@ const DashHeader = () => {
         {userButton}
         {newNoteButton}
         {noteButton}
+        {newTimesheetButton}
+        {timesheetButton}
         {logoutButton}
       </>
     );
