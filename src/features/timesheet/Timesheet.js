@@ -1,5 +1,7 @@
 import { useGetTimesheetsQuery } from "./timesheetApiSlice";
-import { faCalendarTimes } from "@fortawesome/free-solid-svg-icons";
+import { useDeleteTimesheetMutation } from "./timesheetApiSlice";
+import { useEffect } from "react";
+import { faCalendarTimes, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MONTHS } from "../../config/months";
 import { useNavigate } from "react-router-dom";
@@ -12,10 +14,22 @@ const Timesheet = ({ timesheetId }) => {
     }),
   });
 
+  const [deleteTimesheet, { isSuccess, isError, error }] =
+    useDeleteTimesheetMutation();
+
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (isSuccess) navigate("/dash/timesheets");
+  }, [isSuccess, navigate]);
+
   if (timesheet) {
-    const handleDailyLogs = () => navigate(`/dash/timesheet/${timesheetId}`);
+    const handleDailyLogs = () =>
+      navigate(`/dash/timesheets/${timesheetId}/dailyLogs`);
+
+    const onDeleteClicked = async () => {
+      await deleteTimesheet({ id: timesheetId });
+    };
 
     return (
       <tr className="table__row user">
@@ -29,6 +43,15 @@ const Timesheet = ({ timesheetId }) => {
           >
             <FontAwesomeIcon icon={faCalendarTimes} />
           </button>
+        </td>
+        <td className="table__cell">
+          <button
+            className="icon-button table__button"
+            onClick={onDeleteClicked}
+          >
+            <FontAwesomeIcon icon={faTrashCan} />
+          </button>
+          {isError && <span className="errmsg">{error?.data?.message}</span>}
         </td>
       </tr>
     );

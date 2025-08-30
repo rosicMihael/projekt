@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 
+const MONTH_REGEX = /^(1[0-2]|[1-9])$/;
+const YEAR_REGEX = /^[1-9][0-9]*$/;
+
 const NewTimesheetForm = ({ users }) => {
   const [addNewTimesheet, { isLoading, isSuccess, isError, error }] =
     useAddNewTimesheetMutation();
@@ -12,7 +15,17 @@ const NewTimesheetForm = ({ users }) => {
 
   const [userId, setUserId] = useState(users[0].id);
   const [year, setYear] = useState("");
+  const [validYear, setValidYear] = useState(false);
   const [month, setMonth] = useState("");
+  const [validMonth, setValidMonth] = useState(false);
+
+  useEffect(() => {
+    setValidYear(YEAR_REGEX.test(year));
+  }, [year]);
+
+  useEffect(() => {
+    setValidMonth(MONTH_REGEX.test(month));
+  }, [month]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -27,7 +40,7 @@ const NewTimesheetForm = ({ users }) => {
   const onYearChange = (e) => setYear(e.target.value);
   const onMonthChange = (e) => setMonth(e.target.value);
 
-  const canSave = [userId, year, month].every(Boolean) && !isLoading;
+  const canSave = [userId, validYear, validMonth].every(Boolean) && !isLoading;
 
   const onSaveClicked = async (e) => {
     e.preventDefault();
@@ -45,8 +58,8 @@ const NewTimesheetForm = ({ users }) => {
   });
 
   const errClass = isError ? "errmsg" : "offscreen";
-  const validTitleClass = !year ? "form__input--incomplete" : "";
-  const validTextClass = !month ? "form__input--incomplete" : "";
+  const validYearClass = !validYear ? "form__input--incomplete" : "";
+  const validMonthClass = !validMonth ? "form__input--incomplete" : "";
 
   return (
     <>
@@ -62,10 +75,10 @@ const NewTimesheetForm = ({ users }) => {
           </div>
         </div>
         <label className="form__label" htmlFor="year">
-          Year:
+          Year: <span className="nowrap">[npr. 2025]</span>
         </label>
         <input
-          className={`form__input ${validTitleClass}`}
+          className={`form__input ${validYearClass}`}
           id="year"
           name="year"
           type="text"
@@ -75,10 +88,10 @@ const NewTimesheetForm = ({ users }) => {
         />
 
         <label className="form__label" htmlFor="month">
-          Month:
+          Month: <span className="nowrap">[1-12]</span>
         </label>
         <input
-          className={`form__input ${validTextClass}`}
+          className={`form__input ${validMonthClass}`}
           id="month"
           name="month"
           type="text"

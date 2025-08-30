@@ -30,10 +30,10 @@ const DashHeader = () => {
 
   const onNewNoteClicked = () => navigate("/dash/notes/new");
   const onNewUserClicked = () => navigate("/dash/users/new");
-  const onNewTimesheetClicked = () => navigate("/dash/timesheet/new");
+  const onNewTimesheetClicked = () => navigate("/dash/timesheets/new");
   const onNotesClicked = () => navigate("/dash/notes");
   const onUsersClicked = () => navigate("/dash/users");
-  const onTimesheetsClicked = () => navigate("/dash/timesheet");
+  const onTimesheetsClicked = () => navigate("/dash/timesheets");
 
   let dashClass = null;
   if (

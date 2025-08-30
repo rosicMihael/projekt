@@ -52,6 +52,9 @@ const TimesheetsList = () => {
             <th scope="col" className="table__th user__edit">
               Radni dani:
             </th>
+            <th scope="col" className="table__th user__edit">
+              Izbrisi:
+            </th>
           </tr>
         </thead>
         <tbody>{tableContent}</tbody>

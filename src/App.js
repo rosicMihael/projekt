@@ -55,9 +55,9 @@ function App() {
                   <Route path="new" element={<NewNote />} />
                 </Route>
 
-                <Route path="timesheet">
+                <Route path="timesheets">
                   <Route index element={<TimesheetsList />} />
-                  <Route path=":id" element={<DailyLogs />} />
+                  <Route path=":id/dailyLogs" element={<DailyLogs />} />
                   <Route path="new" element={<NewTimesheet />} />
                 </Route>
               </Route>
