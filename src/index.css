@@ -334,6 +334,34 @@ tr {
   gap: 0.5em;
 }
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.logs {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.logs-nav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.logs-buttons {
+  display: flex;
+}
+
+.logs-sum {
+  position: absolute;
+  left: 20px;
+  top: 90%;
+}
+
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 2rem;

@@ -31,6 +31,11 @@ const DailyLogs = () => {
     }
   );
 
+  let sum = 0;
+  dailyLogs.forEach((log) => {
+    sum += log.earnings;
+  });
+
   const [deleteTimesheet, { isSuccess }] = useDeleteTimesheetMutation();
 
   useEffect(() => {
@@ -63,18 +68,23 @@ const DailyLogs = () => {
 
   return (
     <div>
-      <h2>
-        Mjesec {MONTHS[timesheet.month]} {timesheet.year}.
-      </h2>
       <nav className="logs-nav">
-        <button className="icon-button" onClick={onNewLogClicked}>
-          <FontAwesomeIcon icon={faPenSquare} />
-        </button>
-        <button className="icon-button" onClick={onDeleteClicked}>
-          <FontAwesomeIcon icon={faTrashCan} />
-        </button>
+        <h2>
+          Mjesec {MONTHS[timesheet.month]} {timesheet.year}.
+        </h2>
+        <div className="logs-buttons">
+          <button className="icon-button" onClick={onNewLogClicked}>
+            <FontAwesomeIcon icon={faPenSquare} />
+          </button>
+          <button className="icon-button" onClick={onDeleteClicked}>
+            <FontAwesomeIcon icon={faTrashCan} />
+          </button>
+        </div>
       </nav>
-      <DailyLogsList dailyLogs={dailyLogs} />
+      <div className="logs">
+        <DailyLogsList dailyLogs={dailyLogs} />
+      </div>
+      <div className="logs-sum">Sveukupno: {sum}€</div>
     </div>
   );
 };

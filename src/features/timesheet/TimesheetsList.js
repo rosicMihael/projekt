@@ -2,9 +2,12 @@ import { useGetTimesheetsQuery } from "./timesheetApiSlice";
 import PulseLoader from "react-spinners/PulseLoader";
 import Timesheet from "./Timesheet";
 import useTitle from "../../hooks/useTitle";
+import useAuth from "../../hooks/useAuth";
 
 const TimesheetsList = () => {
   useTitle("Timesheets");
+
+  const { username, isManager, isAdmin } = useAuth();
 
   const {
     data: timesheets,
@@ -34,13 +37,22 @@ const TimesheetsList = () => {
   }
 
   if (isSuccess) {
-    const { ids } = timesheets;
+    const { ids, entities } = timesheets;
 
-    const tableContent = ids?.length
-      ? ids.map((timesheetId) => (
-          <Timesheet key={timesheetId} timesheetId={timesheetId} />
-        ))
-      : null;
+    let filteredIds;
+    if (isManager || isAdmin) {
+      filteredIds = [...ids];
+    } else {
+      filteredIds = ids.filter(
+        (timesheetId) => entities[timesheetId].username === username
+      );
+    }
+
+    const tableContent =
+      ids?.length &&
+      filteredIds.map((timesheetId) => (
+        <Timesheet key={timesheetId} timesheetId={timesheetId} />
+      ));
 
     content = (
       <table className="table__timesheet table--users">

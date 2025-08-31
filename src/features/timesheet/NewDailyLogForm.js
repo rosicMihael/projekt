@@ -21,7 +21,9 @@ const NewDailyLogForm = () => {
   const [hourlyPay, setHourlyPay] = useState("");
 
   const today = new Date();
-  const date = today.getDate();
+  const day = today.getDate();
+  const month = today.getMonth();
+  const date = `${day}.${month + 1}.`;
 
   useEffect(() => {
     if (isSuccess) {

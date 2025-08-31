@@ -1,6 +1,7 @@
 import { useGetUsersQuery } from "./usersApiSlice";
 import User from "./User";
 import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const UsersList = () => {
   useTitle("Users");
@@ -19,7 +20,12 @@ const UsersList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    content = (
+      <p className="loader">
+        <PulseLoader color="#FFF" />{" "}
+      </p>
+    );
 
   if (isError) {
     content = (

@@ -25,7 +25,12 @@ const EditNote = () => {
     }),
   });
 
-  if (!note && !users?.length) return <PulseLoader color="#FFF" />;
+  if (!note && !users?.length)
+    return (
+      <p className="loader">
+        <PulseLoader color="#FFF" />;
+      </p>
+    );
 
   if (!isManager && !isAdmin) {
     if (note?.username !== username) {
