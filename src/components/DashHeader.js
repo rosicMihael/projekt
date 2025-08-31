@@ -17,7 +17,7 @@ import { apiSlice } from "../app/api/apiSlice";
 const DASH_REGEX = /^\/dash(\/)?$/;
 const NOTES_REGEX = /^\/dash\/notes(\/)?$/;
 const USERS_REGEX = /^\/dash\/users(\/)?$/;
-const TIMESHEET_REGEX = /^\/dash\/timesheet(\/)?$/;
+const TIMESHEET_REGEX = /^\/dash\/timesheets(\/)?$/;
 
 const DashHeader = () => {
   const { isManager, isAdmin } = useAuth();

@@ -12,7 +12,12 @@ const NewTimesheet = () => {
     }),
   });
 
-  if (!users?.length) return <PulseLoader color="#FFF" />;
+  if (!users?.length)
+    return (
+      <p className="loader">
+        <PulseLoader color="#FFF" />
+      </p>
+    );
 
   return <NewTimesheetForm users={users} />;
 };

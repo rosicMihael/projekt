@@ -3,7 +3,7 @@ const DailyLogsList = ({ dailyLogs }) => {
     <ul>
       {dailyLogs.map((log) => (
         <li key={log._id}>
-          Dan {log.day}: {log.from} - {log.to} -&gt;
+          Dan {log.date}: {log.from} - {log.to} -&gt;
           {`\t${log.earnings.toFixed(2)}`}€
         </li>
       ))}

@@ -32,7 +32,7 @@ const NewTimesheetForm = ({ users }) => {
       setUserId("");
       setYear("");
       setMonth("");
-      navigate("/dash/timesheet");
+      navigate("/dash/timesheets");
     }
   }, [isSuccess, navigate]);
 

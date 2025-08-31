@@ -18,6 +18,7 @@ import useTitle from "./hooks/useTitle";
 import TimesheetsList from "./features/timesheet/TimesheetsList";
 import DailyLogs from "./features/timesheet/DailyLogs";
 import NewTimesheet from "./features/timesheet/NewTimesheet";
+import NewDailyLogForm from "./features/timesheet/NewDailyLogForm";
 
 function App() {
   useTitle("Dan D. Repairs");
@@ -57,8 +58,9 @@ function App() {
 
                 <Route path="timesheets">
                   <Route index element={<TimesheetsList />} />
-                  <Route path=":id/dailyLogs" element={<DailyLogs />} />
                   <Route path="new" element={<NewTimesheet />} />
+                  <Route path=":id/logs" element={<DailyLogs />} />
+                  <Route path=":id/logs/new" element={<NewDailyLogForm />} />
                 </Route>
               </Route>
             </Route>

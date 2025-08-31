@@ -1,4 +1,5 @@
 import { useGetTimesheetsQuery } from "./timesheetApiSlice";
+import PulseLoader from "react-spinners/PulseLoader";
 import Timesheet from "./Timesheet";
 import useTitle from "../../hooks/useTitle";
 
@@ -19,7 +20,12 @@ const TimesheetsList = () => {
 
   let content;
 
-  if (isLoading) content = <p>Loading...</p>;
+  if (isLoading)
+    content = (
+      <p className="loader">
+        <PulseLoader color="#FFF" />
+      </p>
+    );
 
   if (isError) {
     content = (
@@ -51,9 +57,6 @@ const TimesheetsList = () => {
             </th>
             <th scope="col" className="table__th user__edit">
               Radni dani:
-            </th>
-            <th scope="col" className="table__th user__edit">
-              Izbrisi:
             </th>
           </tr>
         </thead>

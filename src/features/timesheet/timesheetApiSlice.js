@@ -41,43 +41,45 @@ export const timesheetApiSlice = apiSlice.injectEndpoints({
       invalidatesTags: [{ type: "Timesheet", id: "LIST" }],
     }),
     deleteTimesheet: builder.mutation({
-      query: ({ id }) => ({
-        url: "/timesheets",
+      query: ({ timesheetId }) => ({
+        url: `/timesheets/${timesheetId}`,
         method: "DELETE",
-        body: {
-          id,
-        },
       }),
       invalidatesTags: (result, error, arg) => [
         { type: "Timesheet", id: arg.id },
       ],
     }),
     getDailyLogs: builder.query({
-      query: (timesheetId) => `/timesheets/${timesheetId}/dailyLogs`,
+      query: (timesheetId) => `/timesheets/${timesheetId}/logs`,
       providesTags: (result, error, timesheetId) => [
         { type: "Timesheet", id: timesheetId },
       ],
     }),
-    addDailyLog: builder.mutation({
-      query: ({ timesheetId, dailyLog }) => ({
-        url: `/timesheets/${timesheetId}/dailyLogs`,
+    addNewDailyLog: builder.mutation({
+      query: ({ timesheetId, from, to, hourlyPay, date }) => ({
+        url: `/timesheets/${timesheetId}/logs/new`,
         method: "POST",
-        body: dailyLog,
+        body: {
+          from,
+          to,
+          hourlyPay,
+          date,
+        },
       }),
-      invalidatesTags: (result, error, { timesheetId }) => [
-        { type: "Timesheet", id: timesheetId },
+      invalidatesTags: (result, error, args) => [
+        { type: "Timesheet", id: args.timesheetId },
       ],
     }),
-    updateDailyLog: builder.mutation({
+    /*updateDailyLog: builder.mutation({
       query: ({ timesheetId, logId, dailyLog }) => ({
-        url: `/timesheets/${timesheetId}/dailyLogs/${logId}`,
+        url: `/timesheets/${timesheetId}`,
         method: "PATCH",
         body: dailyLog,
       }),
       invalidatesTags: (result, error, { timesheetId }) => [
         { type: "Timesheet", id: timesheetId },
       ],
-    }),
+    }),*/
   }),
 });
 
@@ -86,8 +88,7 @@ export const {
   useAddNewTimesheetMutation,
   useDeleteTimesheetMutation,
   useGetDailyLogsQuery,
-  useAddDailyLogMutation,
-  useUpdateDailyLogMutation,
+  useAddNewDailyLogMutation,
 } = timesheetApiSlice;
 
 // returns the query result object
