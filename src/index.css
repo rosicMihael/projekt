@@ -134,6 +134,20 @@ a:focus-visible {
   content: "➜ ";
 }
 
+.public footer,
+.login footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+}
+
+.public header,
+.login header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
 /* || DASH HEADER, CONTAINER & FOOTER */
 
 .dash-header {
