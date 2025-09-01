@@ -134,26 +134,6 @@ a:focus-visible {
   content: "➜ ";
 }
 
-.public footer,
-.login footer {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
-  background-color: var(--BGCOLOR);
-  padding: 0.5em;
-  border-top: 1px solid var(--BORDER-COLOR);
-}
-
-.public header,
-.login header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background-color: var(--BGCOLOR);
-  padding: 0 0.5em;
-  border-bottom: 1px solid var(--BORDER-COLOR);
-}
-
 /* || DASH HEADER, CONTAINER & FOOTER */
 
 .dash-header {
