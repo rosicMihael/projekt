@@ -36,10 +36,10 @@ const Welcome = () => {
       )}
 
       <p>
-        <Link to="/dash/timesheets">Pregled Rasporeda</Link>
+        <Link to="/dash/timesheets">Pregled Popisa Sati</Link>
       </p>
       <p>
-        <Link to="/dash/timesheets/new">Dodajte Novi Raspored</Link>
+        <Link to="/dash/timesheets/new">Dodajte Novi Popis Sati</Link>
       </p>
     </section>
   );

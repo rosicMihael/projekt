@@ -406,13 +406,12 @@ tr {
 
 .logs-buttons {
   display: flex;
-  gap: 8px;
+  gap: 5px;
 }
 
 .logs-sum {
-  position: absolute;
   margin-left: 10px;
-  top: 90%;
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 400px) {

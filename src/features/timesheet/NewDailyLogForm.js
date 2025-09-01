@@ -55,13 +55,6 @@ const NewDailyLogForm = () => {
         hourlyPay,
         date,
       });
-      console.log({
-        timesheetId,
-        from,
-        to,
-        hourlyPay,
-        date,
-      });
     }
   };
 

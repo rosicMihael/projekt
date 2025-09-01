@@ -34,11 +34,6 @@ const DailyLogs = () => {
     }
   );
 
-  let sum = 0;
-  dailyLogs.forEach((log) => {
-    sum += log.earnings;
-  });
-
   function sortByDay(logs) {
     return [...logs].sort((a, b) => {
       const dayA = parseInt(a.date.split(".")[0]);
@@ -46,6 +41,24 @@ const DailyLogs = () => {
       return dayA - dayB;
     });
   }
+
+  function formatHour(hourString) {
+    const [hour, minutes] = hourString.split(":");
+    const hourNum = parseInt(hour);
+    const minutesNum = parseInt(minutes) / 60;
+    return hourNum + minutesNum;
+  }
+
+  let sum = 0;
+  dailyLogs.forEach((log) => {
+    sum += log.earnings;
+  });
+
+  let hourSum = 0;
+  dailyLogs.forEach((log) => {
+    const dif = formatHour(log.to) - formatHour(log.from);
+    hourSum += dif;
+  });
 
   const sortedLogs = sortByDay(dailyLogs);
 
@@ -97,7 +110,9 @@ const DailyLogs = () => {
       <div className="logs">
         <DailyLogsList dailyLogs={sortedLogs} />
       </div>
-      <div className="logs-sum">Sveukupno: {sum}€</div>
+      <div className="logs-sum">
+        Sveukupno: {sum}€ {`(${hourSum} h)`}
+      </div>
     </div>
   );
 };
