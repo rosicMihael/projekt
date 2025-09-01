@@ -30,9 +30,9 @@ const Note = ({ noteId }) => {
       <tr className="table__row">
         <td className="table__cell note__status">
           {note.completed ? (
-            <span className="note__status--completed">Completed</span>
+            <span className="note__status--completed">Dovršeno</span>
           ) : (
-            <span className="note__status--open">Open</span>
+            <span className="note__status--open">Otvoreno</span>
           )}
         </td>
         <td className="table__cell note__created">{created}</td>

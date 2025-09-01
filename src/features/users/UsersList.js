@@ -4,7 +4,7 @@ import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const UsersList = () => {
-  useTitle("Users");
+  useTitle("Korisnici");
 
   const {
     data: users,
@@ -45,13 +45,13 @@ const UsersList = () => {
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th user__username">
-              Username
+              Korisnik:
             </th>
             <th scope="col" className="table__th user__roles">
-              Roles
+              Pozicije:
             </th>
             <th scope="col" className="table__th user__edit">
-              Edit
+              Uredi:
             </th>
           </tr>
         </thead>

@@ -10,7 +10,7 @@ const USER_REGEX = /^[A-z]{3,20}$/;
 const PWD_REGEX = /^[A-z0-9!#$@%]{4,12}$/;
 
 const NewUserForm = () => {
-  useTitle("Users");
+  useTitle("Korisnici");
 
   const [addNewUser, { isLoading, isSuccess, isError, error }] =
     useAddNewUserMutation();
@@ -81,7 +81,7 @@ const NewUserForm = () => {
 
       <form className="form" onSubmit={onSaveClicked}>
         <div className="form__title-row">
-          <h2>New User</h2>
+          <h2>Novi Korisnik</h2>
           <div className="form__action-buttons">
             <button className="icon-button" title="Save" disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
@@ -89,7 +89,7 @@ const NewUserForm = () => {
           </div>
         </div>
         <label className="form__label" htmlFor="username">
-          Username: <span className="nowrap">[3-20 letters]</span>
+          Korisničko ime: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
           className={`form__input ${validUserClass}`}
@@ -102,7 +102,7 @@ const NewUserForm = () => {
         />
 
         <label className="form__label" htmlFor="password">
-          Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
+          Lozinka: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
         </label>
         <input
           className={`form__input ${validPwdClass}`}
@@ -114,7 +114,7 @@ const NewUserForm = () => {
         />
 
         <label className="form__label" htmlFor="roles">
-          ASSIGNED ROLES:
+          Pozicije:
         </label>
         <select
           id="roles"

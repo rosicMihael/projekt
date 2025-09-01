@@ -1,6 +1,4 @@
 import { useGetTimesheetsQuery } from "./timesheetApiSlice";
-import { faCalendarTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MONTHS } from "../../config/months";
 import { useNavigate } from "react-router-dom";
 import { memo } from "react";
@@ -19,19 +17,13 @@ const Timesheet = ({ timesheetId }) => {
       navigate(`/dash/timesheets/${timesheetId}/logs`);
 
     return (
-      <tr className="table__row user">
-        <td className="table__cell">{timesheet.username}</td>
-        <td className="table__cell">{timesheet.year}</td>
-        <td className="table__cell">{MONTHS[timesheet.month]}</td>
-        <td className="table__cell">
-          <button
-            className="icon-button table__button"
-            onClick={handleDailyLogs}
-          >
-            <FontAwesomeIcon icon={faCalendarTimes} />
-          </button>
-        </td>
-      </tr>
+      <button onClick={handleDailyLogs} className="timesheet-elem">
+        <h3>{timesheet.username}</h3>
+        <p>
+          {MONTHS[timesheet.month]} {timesheet.year}.
+        </p>
+        <p>Upisano {timesheet.dailyLogs?.length} dana</p>
+      </button>
     );
   } else return null;
 };

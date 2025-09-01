@@ -2,12 +2,9 @@ import { useGetTimesheetsQuery } from "./timesheetApiSlice";
 import PulseLoader from "react-spinners/PulseLoader";
 import Timesheet from "./Timesheet";
 import useTitle from "../../hooks/useTitle";
-import useAuth from "../../hooks/useAuth";
 
 const TimesheetsList = () => {
   useTitle("Rasporedi");
-
-  const { username, isManager, isAdmin } = useAuth();
 
   const {
     data: timesheets,
@@ -37,43 +34,19 @@ const TimesheetsList = () => {
   }
 
   if (isSuccess) {
-    const { ids, entities } = timesheets;
-
-    let filteredIds;
-    if (isManager || isAdmin) {
-      filteredIds = [...ids];
-    } else {
-      filteredIds = ids.filter(
-        (timesheetId) => entities[timesheetId].username === username
-      );
-    }
+    const { ids } = timesheets;
 
     const tableContent =
       ids?.length &&
-      filteredIds.map((timesheetId) => (
+      ids.map((timesheetId) => (
         <Timesheet key={timesheetId} timesheetId={timesheetId} />
       ));
 
     content = (
-      <table className="table__timesheet table--users">
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th user__username">
-              Korisnik:
-            </th>
-            <th scope="col" className="table__th user__roles">
-              Godina:
-            </th>
-            <th scope="col" className="table__th user__edit">
-              Mjesec:
-            </th>
-            <th scope="col" className="table__th user__edit">
-              Raspored:
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <section>
+        <h2>Dostupni rasporedi:</h2>
+        <div className="timesheet-list">{tableContent}</div>
+      </section>
     );
   }
 

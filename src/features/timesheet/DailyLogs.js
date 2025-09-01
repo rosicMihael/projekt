@@ -10,8 +10,11 @@ import PulseLoader from "react-spinners/PulseLoader";
 import DailyLogsList from "./DailyLogsList";
 import { MONTHS } from "../../config/months";
 import { useEffect } from "react";
+import useTitle from "../../hooks/useTitle";
 
 const DailyLogs = () => {
+  useTitle("Radni dani");
+
   const { id: timesheetId } = useParams();
 
   const navigate = useNavigate();
@@ -35,6 +38,16 @@ const DailyLogs = () => {
   dailyLogs.forEach((log) => {
     sum += log.earnings;
   });
+
+  function sortByDay(logs) {
+    return [...logs].sort((a, b) => {
+      const dayA = parseInt(a.date.split(".")[0]);
+      const dayB = parseInt(b.date.split(".")[0]);
+      return dayA - dayB;
+    });
+  }
+
+  const sortedLogs = sortByDay(dailyLogs);
 
   const [deleteTimesheet, { isSuccess }] = useDeleteTimesheetMutation();
 
@@ -82,7 +95,7 @@ const DailyLogs = () => {
         </div>
       </nav>
       <div className="logs">
-        <DailyLogsList dailyLogs={dailyLogs} />
+        <DailyLogsList dailyLogs={sortedLogs} />
       </div>
       <div className="logs-sum">Sveukupno: {sum}€</div>
     </div>

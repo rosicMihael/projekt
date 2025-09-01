@@ -5,7 +5,7 @@ import useTitle from "../../hooks/useTitle";
 import PulseLoader from "react-spinners/PulseLoader";
 
 const NotesList = () => {
-  useTitle("Notes");
+  useTitle("Napomene");
 
   const { username, isManager, isAdmin } = useAuth();
 
@@ -57,22 +57,22 @@ const NotesList = () => {
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th note__status">
-              Status
+              Status:
             </th>
             <th scope="col" className="table__th note__created">
-              Created
+              Napravljeno:
             </th>
             <th scope="col" className="table__th note__updated">
-              Updated
+              Uređeno:
             </th>
             <th scope="col" className="table__th note__title">
-              Title
+              Naslov:
             </th>
             <th scope="col" className="table__th note__username">
-              Assigned to:
+              Namjenjeno:
             </th>
             <th scope="col" className="table__th note__edit">
-              Edit
+              Uredi:
             </th>
           </tr>
         </thead>

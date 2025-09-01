@@ -54,7 +54,7 @@ const NewNoteForm = ({ users }) => {
 
       <form className="form" onSubmit={onSaveClicked}>
         <div className="form__title-row">
-          <h2>New Note</h2>
+          <h2>Nova Napomena</h2>
           <div className="form__action-buttons">
             <button className="icon-button" title="Save" disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
@@ -62,7 +62,7 @@ const NewNoteForm = ({ users }) => {
           </div>
         </div>
         <label className="form__label" htmlFor="title">
-          Title:
+          Naslov:
         </label>
         <input
           className={`form__input ${validTitleClass}`}
@@ -75,7 +75,7 @@ const NewNoteForm = ({ users }) => {
         />
 
         <label className="form__label" htmlFor="text">
-          Text:
+          Tekst:
         </label>
         <textarea
           className={`form__input form__input--text ${validTextClass}`}
@@ -89,7 +89,7 @@ const NewNoteForm = ({ users }) => {
           className="form__label form__checkbox-container"
           htmlFor="username"
         >
-          ASSIGNED TO:
+          Namjenjeno:
         </label>
         <select
           id="username"

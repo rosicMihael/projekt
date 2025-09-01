@@ -105,7 +105,7 @@ const EditNoteForm = ({ note, users }) => {
 
       <form className="form" onSubmit={(e) => e.preventDefault()}>
         <div className="form__title-row">
-          <h2>Edit Note #{note.ticket}</h2>
+          <h2>Uredi Napomenu #{note.ticket}</h2>
           <div className="form__action-buttons">
             <button
               className="icon-button"
@@ -119,7 +119,7 @@ const EditNoteForm = ({ note, users }) => {
           </div>
         </div>
         <label className="form__label" htmlFor="note-title">
-          Title:
+          Naslov:
         </label>
         <input
           className={`form__input ${validTitleClass}`}
@@ -132,7 +132,7 @@ const EditNoteForm = ({ note, users }) => {
         />
 
         <label className="form__label" htmlFor="note-text">
-          Text:
+          Tekst:
         </label>
         <textarea
           className={`form__input form__input--text ${validTextClass}`}
@@ -147,7 +147,7 @@ const EditNoteForm = ({ note, users }) => {
               className="form__label form__checkbox-container"
               htmlFor="note-completed"
             >
-              WORK COMPLETE:
+              Završeno:
               <input
                 className="form__checkbox"
                 id="note-completed"
@@ -162,7 +162,7 @@ const EditNoteForm = ({ note, users }) => {
               className="form__label form__checkbox-container"
               htmlFor="note-username"
             >
-              ASSIGNED TO:
+              Namjenjeno:
             </label>
             <select
               id="note-username"
@@ -176,12 +176,12 @@ const EditNoteForm = ({ note, users }) => {
           </div>
           <div className="form__divider">
             <p className="form__created">
-              Created:
+              Napravljeno:
               <br />
               {created}
             </p>
             <p className="form__updated">
-              Updated:
+              Uređeno:
               <br />
               {updated}
             </p>

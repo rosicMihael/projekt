@@ -4,7 +4,7 @@ import DashFooter from "./DashFooter";
 import useTitle from "../hooks/useTitle";
 
 const DashLayout = () => {
-  useTitle("Dashboard");
+  useTitle("Naslovnica");
   return (
     <>
       <DashHeader />
