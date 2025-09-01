@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "./authSlice";
 import { useLoginMutation } from "./authApiSlice";
 import useTitle from "../../hooks/useTitle";
+import PulseLoader from "react-spinners/PulseLoader";
 
 const Login = () => {
   useTitle("Login");
@@ -56,7 +57,12 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen";
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading)
+    return (
+      <p className="loader">
+        <PulseLoader color="#FFF" />
+      </p>
+    );
 
   const content = (
     <section className="public">

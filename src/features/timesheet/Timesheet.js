@@ -1,5 +1,4 @@
 import { useGetTimesheetsQuery } from "./timesheetApiSlice";
-
 import { faCalendarTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MONTHS } from "../../config/months";

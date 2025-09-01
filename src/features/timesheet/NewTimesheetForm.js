@@ -67,7 +67,7 @@ const NewTimesheetForm = ({ users }) => {
 
       <form className="form" onSubmit={onSaveClicked}>
         <div className="form__title-row">
-          <h2>New Timesheet</h2>
+          <h2>Novi Raspored</h2>
           <div className="form__action-buttons">
             <button className="icon-button" title="Save" disabled={!canSave}>
               <FontAwesomeIcon icon={faSave} />
@@ -75,7 +75,7 @@ const NewTimesheetForm = ({ users }) => {
           </div>
         </div>
         <label className="form__label" htmlFor="year">
-          Year: <span className="nowrap">[npr. 2025]</span>
+          Godina: <span className="nowrap">[npr. 2025]</span>
         </label>
         <input
           className={`form__input ${validYearClass}`}
@@ -88,7 +88,7 @@ const NewTimesheetForm = ({ users }) => {
         />
 
         <label className="form__label" htmlFor="month">
-          Month: <span className="nowrap">[1-12]</span>
+          Mjesec: <span className="nowrap">[1-12]</span>
         </label>
         <input
           className={`form__input ${validMonthClass}`}
@@ -103,7 +103,7 @@ const NewTimesheetForm = ({ users }) => {
           className="form__label form__checkbox-container"
           htmlFor="username"
         >
-          ASSIGNED TO:
+          Vlasnik:
         </label>
         <select
           id="username"

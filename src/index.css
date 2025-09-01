@@ -352,13 +352,20 @@ tr {
   align-content: center;
 }
 
+.logs-nav h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
 .logs-buttons {
   display: flex;
 }
 
 .logs-sum {
   position: absolute;
-  left: 20px;
+  margin-left: 10px;
   top: 90%;
 }
 

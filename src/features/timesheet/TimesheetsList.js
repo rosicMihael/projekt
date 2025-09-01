@@ -5,7 +5,7 @@ import useTitle from "../../hooks/useTitle";
 import useAuth from "../../hooks/useAuth";
 
 const TimesheetsList = () => {
-  useTitle("Timesheets");
+  useTitle("Rasporedi");
 
   const { username, isManager, isAdmin } = useAuth();
 
@@ -59,7 +59,7 @@ const TimesheetsList = () => {
         <thead className="table__thead">
           <tr>
             <th scope="col" className="table__th user__username">
-              Korisničko ime:
+              Korisnik:
             </th>
             <th scope="col" className="table__th user__roles">
               Godina:
@@ -68,7 +68,7 @@ const TimesheetsList = () => {
               Mjesec:
             </th>
             <th scope="col" className="table__th user__edit">
-              Radni dani:
+              Raspored:
             </th>
           </tr>
         </thead>
