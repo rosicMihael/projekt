@@ -358,6 +358,7 @@ tr {
   cursor: pointer;
   border-radius: 8px;
   border: 2px solid black;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -373,6 +374,7 @@ tr {
   border: none;
   width: 32px;
   height: 32px;
+  color: black;
 }
 
 .del-button:hover {
