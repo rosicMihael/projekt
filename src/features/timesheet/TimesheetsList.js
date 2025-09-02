@@ -44,7 +44,7 @@ const TimesheetsList = () => {
 
     content = (
       <section>
-        <h2>Dostupni rasporedi:</h2>
+        <h2>Dostupni Popisi Sati:</h2>
         <div className="timesheet-list">{tableContent}</div>
       </section>
     );

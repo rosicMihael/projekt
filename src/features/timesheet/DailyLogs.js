@@ -2,14 +2,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   useGetTimesheetsQuery,
   useGetDailyLogsQuery,
-  useDeleteTimesheetMutation,
 } from "./timesheetApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faPenSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenSquare } from "@fortawesome/free-solid-svg-icons";
 import PulseLoader from "react-spinners/PulseLoader";
 import DailyLogsList from "./DailyLogsList";
 import { MONTHS } from "../../config/months";
-import { useEffect } from "react";
 import useTitle from "../../hooks/useTitle";
 
 const DailyLogs = () => {
@@ -62,24 +60,12 @@ const DailyLogs = () => {
 
   const sortedLogs = sortByDay(dailyLogs);
 
-  const [deleteTimesheet, { isSuccess }] = useDeleteTimesheetMutation();
-
-  useEffect(() => {
-    if (isSuccess) {
-      navigate("/dash/timesheets");
-    }
-  }, [isSuccess, navigate]);
-
   if (isLoading)
     return (
       <p className="loader">
         <PulseLoader color="#FFF" />
       </p>
     );
-
-  const onDeleteClicked = async () => {
-    await deleteTimesheet({ timesheetId });
-  };
 
   const onNewLogClicked = () => {
     navigate(`/dash/timesheets/${timesheetId}/logs/new`);
@@ -101,9 +87,6 @@ const DailyLogs = () => {
         <div className="logs-buttons">
           <button className="icon-button" onClick={onNewLogClicked}>
             <FontAwesomeIcon icon={faPenSquare} />
-          </button>
-          <button className="icon-button" onClick={onDeleteClicked}>
-            <FontAwesomeIcon icon={faTrashCan} />
           </button>
         </div>
       </nav>
