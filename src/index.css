@@ -410,6 +410,54 @@ tr {
   margin-top: 10px;
 }
 
+.del-choice-inactive {
+  display: none;
+}
+
+.del-choice-active {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  border-radius: 10px;
+  gap: 20px;
+  width: 250px;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  z-index: 5;
+  animation: appear 300ms ease-out;
+}
+
+@keyframes appear {
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 5%;
+    opacity: 1;
+  }
+}
+
+.del-choice-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.no,
+.yes {
+  width: 60px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
 @media screen and (max-width: 400px) {
   h1 {
     font-size: 2rem;

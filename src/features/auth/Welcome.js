@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Welcome = () => {
   const date = new Date();
-  const today = new Intl.DateTimeFormat("en-GB", {
+  const today = new Intl.DateTimeFormat("hr-HR", {
     dateStyle: "full",
     timeStyle: "long",
   }).format(date);

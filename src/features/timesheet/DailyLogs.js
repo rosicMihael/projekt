@@ -82,7 +82,7 @@ const DailyLogs = () => {
     <div>
       <nav className="logs-nav">
         <h2>
-          Mjesec {MONTHS[timesheet.month]} {timesheet.year}.
+          {timesheet.username}, {MONTHS[timesheet.month]} {timesheet.year}.
         </h2>
         <div className="logs-buttons">
           <button className="icon-button" onClick={onNewLogClicked}>

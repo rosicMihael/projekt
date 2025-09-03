@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://projekt-api-smnh.onrender.com", //https://projekt-api-smnh.onrender.com
+  baseUrl: "http://localhost:3500", //https://projekt-api-smnh.onrender.com
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -22,7 +22,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
     const refreshToken = localStorage.getItem("refreshToken");
 
-    if (!refreshToken) return result; // nema refresh token, ne može refreshati
+    if (!refreshToken) return result;
 
     // send refresh token to get new access token
     const refreshResult = await baseQuery(
