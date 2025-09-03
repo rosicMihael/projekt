@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://projekt-api-smnh.onrender.com", //https://projekt-api-smnh.onrender.com
+  baseUrl: "http://localhost:3500", //https://projekt-api-smnh.onrender.com
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -20,8 +20,20 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
   if (result?.error?.status === 403 || result?.error?.status === 401) {
     console.log("sending refresh token");
 
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (!refreshToken) return result; // nema refresh token, ne može refreshati
+
     // send refresh token to get new access token
-    const refreshResult = await baseQuery("/auth/refresh", api, extraOptions);
+    const refreshResult = await baseQuery(
+      {
+        url: "/auth/refresh",
+        method: "POST",
+        body: { refreshToken },
+      },
+      api,
+      extraOptions
+    );
 
     if (refreshResult?.data) {
       // store the new token
@@ -31,7 +43,7 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
       result = await baseQuery(args, api, extraOptions);
     } else {
       if (refreshResult?.error?.status === 403) {
-        refreshResult.error.data.message = "Your login has expired. ";
+        refreshResult.error.data.message = "Your login has expired.";
       }
       return refreshResult;
     }

@@ -16,26 +16,26 @@ const PersistLogin = () => {
     useRefreshMutation();
 
   useEffect(() => {
+    // React 18 Strict Mode u developmentu može dvaput pozvati useEffect
     if (effectRan.current === true || process.env.NODE_ENV !== "development") {
-      // React 18 Strict Mode
-
       const verifyRefreshToken = async () => {
-        //console.log("verifying refresh token");
         try {
-          await refresh();
+          await refresh(); // refresh mutation uzima refreshToken iz localStorage
           setTrueSuccess(true);
         } catch (err) {
-          //console.error(err);
+          console.error(err);
         }
       };
 
-      if (!token && persist) verifyRefreshToken();
+      if (!token && persist) {
+        verifyRefreshToken(); // poziva async funkciju unutar useEffect
+      }
     }
 
-    return () => (effectRan.current = true);
-
-    // eslint-disable-next-line
-  }, []);
+    return () => {
+      effectRan.current = true;
+    };
+  }, [token, persist, refresh]);
 
   let content;
   if (!persist) {
