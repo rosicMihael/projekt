@@ -292,6 +292,7 @@ tr {
 .form__submit-button {
   padding: 0.5em;
   border-radius: 15px;
+  color: black;
 }
 
 .form__input--text {
@@ -416,7 +417,7 @@ tr {
 
 .del-choice-active {
   display: flex;
-  position: absolute;
+  position: fixed;
   flex-direction: column;
   text-align: center;
   padding: 10px;
@@ -430,7 +431,7 @@ tr {
   top: 5%;
   transform: translateX(-50%);
   z-index: 5;
-  animation: appear 300ms ease-out;
+  animation: appear 200ms linear;
 }
 
 @keyframes appear {
@@ -448,6 +449,7 @@ tr {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  color: black;
 }
 
 .no,
@@ -456,7 +458,6 @@ tr {
   border-radius: 12px;
   cursor: pointer;
   border: 1px solid black;
-  color: black;
 }
 
 @media screen and (max-width: 400px) {
