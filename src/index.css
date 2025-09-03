@@ -456,6 +456,7 @@ tr {
   border-radius: 12px;
   cursor: pointer;
   border: 1px solid black;
+  color: black;
 }
 
 @media screen and (max-width: 400px) {
