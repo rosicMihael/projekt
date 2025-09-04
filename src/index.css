@@ -431,16 +431,16 @@ tr {
   top: 5%;
   transform: translateX(-50%);
   z-index: 5;
-  animation: appear 200ms linear;
+  animation: appear 450ms ease-out;
 }
 
 @keyframes appear {
   from {
-    top: 0;
+    transform: translate(-50%, -150%);
     opacity: 0;
   }
   to {
-    top: 5%;
+    transform: translateY(-50%, 0);
     opacity: 1;
   }
 }
@@ -449,7 +449,6 @@ tr {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  color: black;
 }
 
 .no,
@@ -458,6 +457,9 @@ tr {
   border-radius: 12px;
   cursor: pointer;
   border: 1px solid black;
+  color: #000;
+  appearance: none;
+  background-color: white;
 }
 
 @media screen and (max-width: 400px) {
