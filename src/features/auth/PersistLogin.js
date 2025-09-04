@@ -45,7 +45,7 @@ const PersistLogin = () => {
     //persist: yes, token: no
     //console.log("loading");
     content = (
-      <p>
+      <p className="loader">
         <PulseLoader color="#FFF" />
       </p>
     );
