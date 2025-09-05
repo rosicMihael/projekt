@@ -65,7 +65,7 @@ const Timesheet = ({ timesheetId }) => {
             <p>
               {MONTHS[timesheet.month]} {timesheet.year}.
             </p>
-            <p>Upisano {timesheet.dailyLogs?.length} dana</p>
+            <p>Uneseno {timesheet.dailyLogs?.length} zapisa</p>
           </button>
           <button className="del-button" onClick={onDeleteClicked}>
             <FontAwesomeIcon icon={faTrashCan} />

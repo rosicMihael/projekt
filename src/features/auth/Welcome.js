@@ -17,11 +17,11 @@ const Welcome = () => {
       <h1>Dobrodošli {username}!</h1>
 
       <p>
-        <Link to="/dash/notes">Pregled techNotes-a</Link>
+        <Link to="/dash/notes">Pregled Napomena</Link>
       </p>
 
       <p>
-        <Link to="/dash/notes/new">Dodajte Novi techNote</Link>
+        <Link to="/dash/notes/new">Dodajte Novu Napomenu</Link>
       </p>
 
       {(isManager || isAdmin) && (
