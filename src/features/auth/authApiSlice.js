@@ -9,16 +9,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         body: { ...credentials },
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          const { accessToken, refreshToken } = data;
-          localStorage.setItem("refreshToken", refreshToken);
-          dispatch(setCredentials({ accessToken }));
-        } catch (err) {
-          console.log(err);
-        }
-      },
     }),
     sendLogout: builder.mutation({
       query: () => ({
@@ -27,9 +17,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
-          await queryFulfilled;
+          const { data } = await queryFulfilled;
+          console.log(data);
           dispatch(logOut());
-          localStorage.removeItem("refreshToken");
+          setTimeout(() => {
+            dispatch(apiSlice.util.resetApiState());
+          }, 1000);
         } catch (err) {
           console.log(err);
         }
@@ -38,13 +31,12 @@ export const authApiSlice = apiSlice.injectEndpoints({
     refresh: builder.mutation({
       query: () => ({
         url: "/auth/refresh",
-        method: "POST",
-        credentials: "include",
-        body: { refreshToken: localStorage.getItem("refreshToken") },
+        method: "GET",
       }),
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
+          console.log(data);
           const { accessToken } = data;
           dispatch(setCredentials({ accessToken }));
         } catch (err) {
